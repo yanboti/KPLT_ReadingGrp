@@ -1,0 +1,10 @@
+*.pdf
+*.aux
+*.log
+*.toc
+*.synctex.gz
+*.swp
+diff.tex
+*.bak*
+*.bbl
+*.blg
