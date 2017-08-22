@@ -1,0 +1,138 @@
+\documentclass{amsart}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{fullpage}
+\usepackage{tikz}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{lem}[theorem]{Lemma}
+\newtheorem{cor}[theorem]{Corollary}
+\newtheorem{remark}{Remark}
+\theoremstyle{definition}\newtheorem*{defn}{Definition}
+\theoremstyle{definition}\newtheorem*{eg}{Example}
+
+\DeclareMathOperator{\End}{End}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\H}{\mathbb{H}}
+\renewcommand{\O}{\mathcal{O}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\title{Deuring Correspondence Reading Group}
+\date{}
+
+\begin{document}
+
+\section{KPLT}
+\subsection*{\S1\hspace{0.5cm}Introduction}
+Firstly, we resolve the differences between the two presentations of the equivalence of categories in KPLT and in Kohel's thesis.
+
+In Kohel's thesis, the category of elliptic curves is given by elliptic curves $E$ defined over $k$ (with positive characteristic) and the frobenius endomorphism $\pi$ of $k$ as the objects and homomorphisms $\phi:E_1\to E_2$ such that $\phi\circ\pi_1=\pi_2\circ\phi$ as morphisms. The next category is the category of projective right modules of rank one over $\O$, where $\O$ is fixed. (Note that $\O$ is arbitrary and the choice only affects the explicit construction of the equivalence later.) The objects in this category is given by right projective modules of rank one $I$ and an endomorphism of $I$ of reduced norm $q$, where this should be thought of as the frobenius endomorphism. The morphisms are given by a homomorphism of modules $\psi:I_1\to I_2$ such that $\psi\circ\phi_1=\phi_2\circ\psi$.
+
+To state the equivalence of the categories, we must first fix $\O$ in the category of projective modules. Then there exists $E_0$ with $\O$ as its endomorphism ring. Now, the equivalence is given by the functor that sends $(E,\pi)$ to $(\hom(E_0,E),\tau_{\pi})$, where $\tau_{\pi}$ is the homomorphism of $\hom(E_0,E)$ to itself given by left composition by $\pi$.
+
+In KPLT, we fix an elliptic curve $E_0/k$ and its endomorphism ring $\O=\End(E_0)$ before we do anything. The category of elliptic curves is given by $(E_1,\phi:E_0\to E_1)$ as its objects and $\alpha:E_1\to E_2$ such that $(E_1,\phi:E_0\to E_1)\mapsto(E_2,\alpha\circ\phi:E_0\to E_2)$ as its morphisms. The category of left $\O$-ideals is given by left $\O$-ideals with morphisms given by left $\O$-ideal homomorphisms.
+
+The equivalence of categories is given by $(E_1,\phi)\mapsto \hom(E_1,E_0)\phi$ and the morphisms $\alpha:(E_1,\phi:E_0\to E_1)\mapsto(E_2,\alpha\circ\phi:E_0\to E_2)$ are sent to $\hom(E_2,E_0)\alpha\phi_1$.
+
+The main difference is that in Kohel's thesis, $\hom(E_0,E)$ is not an $\O$-ideal, while $\hom(E,E_0)\phi$ is an $\O$-ideal. Note that in KPLT we can choose many $\phi$'s but they are same ``same choice'' under some equivalence which is given by the ideal classes. This is made explicit by $I\sim J\iff I=J\beta$ where $\beta=\hat{\phi}\psi$ and we have $\hom\phi\hat{\phi}\psi$.
+\subsection*{\S2.3\hspace{0.5cm}Extremal orders}
+The discussion here is to define extremal orders which intuitively are just endomorphism rings of supersingular elliptic curves $E$ such that $j(E)\in\F_p$. This gives us the non-trivial endomorphism given by the Frobenius endomorphism over $\F_p$.
+
+The rest of \S2.3 itself with the presentation of the maximal order. Since we have the $p$-extremal order, we have already defined the quaternion algebra (as the one ramified at $p$ and $\infty$). This $p$ is going to be large and so when dealing with norm equations, it is best not to have to deal with $p$. Hence the authors defined $R$ to be a quadratic subring such that $R$ has two conditions
+\begin{itemize}
+\item[-] it is as simple as possible (i.e. $R=\Z[i]$, or $\Z[(1+i)/2]$, etc.);
+\item[-] it is such that $[\O:R+Rj]$ is small.
+\end{itemize}
+Then Lemmata 2 to 4 shows that these are not restrictive conditions. The proofs are not provided and the ideas will be outlined here. Take for example Lemma 2, then showing that $\Z\left\langle i,\frac{1+j}{2}\right\rangle$ is an order, one has to show that it still has finite basis, i.e. $\left(\frac{1+j}{2}\right)^k$ is going to be expressible as some integral expression of $i,j$. Then one needs to show that $\Z\left\langle i,\frac{1+j}{2}\right\rangle$ is a maximal order. We do this by computing the discriminant. This is codified in Voight's ``\textit{Identifying The Matrix Ring: Algorithms For Quaternion Algebras And Quadratic Forms}''. Next, to show that there are exactly two maximal orders, we do another computation with discriminants again.
+
+\subsection*{\S2.4\hspace{0.5cm}Reduced norms and ideal morphisms}
+This subsection introduces us to the \emph{normalised norm map}. If $I$ and $J$ are left $\O$-ideals, a homomorphism of $I$ to $J$ is a map given by $\alpha\mapsto\alpha\gamma$ for $\gamma\in B_{p,\infty}^*$. Now, if $J=I\gamma$, then the map is an isomorphism. Now consider the reduced norms of $\alpha$ and $\alpha\gamma$. They will not be equal in general, hence to reconcile this problem, we define the normalised norm map that makes invariant the norm of an element under isomorphisms.
+
+\subsection*{\S3\hspace{0.5cm}Preliminary algorithmic results}
+The first subsection is just a long-winded way of saying brute force in a box.
+
+The second subsection just says that we need $j\in\F_p$ so that we can split the norm equation into two parts. The split is into two small bivariate equations that we then need to solve.
+
+\subsection*{\S4.1\hspace{0.5cm}Overview of algorithm}
+We assume that we have an arbitrary ideal $I$ of reduced norm $N$. Then the task is reduced to finding an element in $I$ with a specific reduced norm (by Lemma 5). This is tackled in a few steps. 
+\begin{itemize}
+\item[-] In the zeroth step, given $I$ an ideal, we find an element $\alpha\in I$ such that $q_I(\alpha)=N$. This is done using \S3.1.
+\item[-] In the first step, we will find an element in $\O$, which we call $\gamma$ with reduced norm $N\ell^{e_0}$. They accomplish this step using methods in \S3.2.
+\item[-] Then we need to find some $\mu\in I$ such that $\beta=\gamma\mu\in I$ (this is really step (2), where we are trying to find $[\mu]\in(\O/N\O)^*$ such that $(\O\gamma/N\O)[\mu]=I/N\O$). This uses methods in \S4.2 and \S4.3.
+\item[-] Then we lift in the third step.
+\end{itemize}
+
+Note that $I=\O(N,\alpha)$, where $N=n(I)$. The point of taking mod $N$ in the above steps can be seen to isolate the $\alpha$ component of the ideal. We still need to check that all ideals can be constructed in this manner. Indeed, we have the following inclusion: $N\O\subset I\subset\O$. If $\alpha\notin(N)$, then indeed, the first inclusion cannot be an equality. If $\alpha$ is chosen to have norm $N$, then the second inclusion cannot be an equality too, hence
+\[N\O\subsetneq I\subsetneq\O\,.\]
+Note that the index $[\O:N\O]=N^4$ and $[\O:I]=n(I)^2=N^2$.
+
+So we have that if there exists some $\alpha\in I$ with norm $N$, then we can write $I$ as $\O(N,\alpha)$. Conversely, since $n(I)$ is defined to be $\gcd(n(\alpha)\mid\alpha\in I)$, we can always find such an $\alpha$.
+
+Also, I view steps (2) and (3) as constructing $\beta$ such that $\beta(\gamma)=I$, and so is trying to find another representative in the ideal class.
+
+\subsection*{\S4.3\hspace{0.5cm}Isomorphism of $\O/N\O$-ideals}
+This solves Step 2 in the overview. The aim is to recover $\mu$. Lemma 6 basically ensures the existence of such a $\mu$. The intuition behind Lemma 6 is that ideals are represented as orbits of $A$ on rank 1 matrices and the task becomes to find the action from one orbit to another. This action exists since the action is transitive. Also, this can be done using linear algebra since we have mapped everything to matrices.
+
+
+\newpage
+
+\section{Waterhouse}
+\subsection*{Introduction}
+Here, Waterhouse stated the motivation for studying torsion points in finite fields: The lattice structure over $\C$ disappears when we look at curves over fields of positive characteristics $p$. Weil then proved that for a prime $\ell\neq p$, the $\ell$-power torsion groups look just as they would over $\C$.
+
+Over a finite field, there is a correspondence between the homomorphisms between abelian varieties and homomorphisms of $\Z_{\ell}$-modules (the $\ell$-power torsion subgroups).
+
+A short note on \'etale group schemes. Richard Pink's notes on finite group schemes has a proposition (Prop 15.1) that says that a finite commutative group scheme $G$ over $k$ is \'etale if and only if $F_G$, the Frobenius, is an isomorphism.
+
+\subsection*{\S1\hspace{0.5cm}$\ell$-Adic Representations and $p$-Divisible Groups}
+This chapter states a lot of the theory, but the most important theorem/result for us is the one stated in the previous section:
+\begin{theorem*}[Tate]
+If $k$ is finite, then \[\hom(A,B)\otimes\Z_{\ell} \xrightarrow{\sim} \hom_{\Z_{\ell}[\mathcal{G}]}(T_{\ell}A,T_{\ell}B)\,.\]
+\end{theorem*}
+Basically, we have shown that $T_{\ell}$ and $V_{\ell}$ are functors, so the object is to link the two group of homomorphisms together. Since $\hom(A,B)$ is a $\Z$-module, we need to turn it into a $\Z_{\ell}$-module first by performing the tensor product. I would really like to see the explicit isomorphism though...
+
+\subsection*{\S\hspace{0.5cm}Classification up to Isogeny}
+The very first result is already non-trivial. (Note that is is easy to interpret when $A$ is genus 1.)
+\begin{theorem}[Tate]
+The varieties $A$ and $B$ are isogenous over $k$ if and only if $h_A=h_B$, where $h_{*}$ are the characteristic polynomials of the Frobenius endomorphisms of $*$ over $k$.
+\end{theorem}
+
+Hence there is a correspondence between isogenous classes of varieties and polynomials.
+
+To study the correspondence, associate the Frobenius endomorphism (denoted $\mathfrak{f}_A$) with an algebraic integer (denoted $\pi$).
+
+\newpage
+\subsection*{My notes}
+I have three questions to begin with:
+\begin{enumerate}
+\item Why is $\O/\ell\O\cong M_2(\F_{\ell})$?
+
+\noindent\textbf{Answer:} This comes from the paper. Note that this is an isomorphism of rings. It is easy to see the isomorphism as additive groups, but the multiplication operation is a little harder.
+
+\medskip
+
+Note that from the paper, we have 
+\[\frac{\O}{N\O}\cong\frac{R+Rj}{N(R+Rj)}\cong M_2(\Z/N\Z)\,.\]
+The isomorphism 
+\[\frac{\O}{N\O}\cong M_2(\Z/N\Z)\]
+is given by the faithful action of $\frac{\O}{N\O}$ on $E[n]$, where $\O$ is viewed as $\End(E)$ and the action is faithful because any endomorphism that kills $E[n]$ must be able to factor out $[N]$, and so we can get the injection
+\[\frac{\O}{N\O}\hookrightarrow \End(E[N])\]
+and we get the isomorphism by computing the sizes on both sides.
+
+\item Why is $\O/\ell\O\cong V_1\oplus V_2$ as left $\O/\ell\O$-modules, where $V_i\cong\F_{\ell}^2$?
+
+\noindent\textbf{Answer:} This comes from the previous isomorphism, since $M_2(\F_{\ell})\cong \F_{\ell}^4$.
+\item Why is there the following 1-1 correspondence?
+\begin{align*}
+\P^{1}(\F_{\ell})	&\leftrightarrow	\text{left principal ideals of index $\ell$ in }M_2(\F_{\ell})\\
+(x:y)					&\mapsto			M_2(\F_{\ell})\begin{pmatrix}x&y\\0&0\end{pmatrix}\,.
+\end{align*}
+\end{enumerate}
+
+\end{document}
